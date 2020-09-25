@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 
 export default ({ comments }) => {
-  const renderedComments = comments.map((item) => {
+  const renderedComments = comments.map(comment => {
     let content;
-    if(item.status === "approved") {
-      content = item.content;
+
+    if (comment.status === 'approved') {
+      content = comment.content;
     }
-    if(item.status === "pending") {
-      content = "This comment is waiting for approval!";
+
+    if (comment.status === 'pending') {
+      content = 'This comment is awaiting moderation';
     }
-    if(item.status === "rejected") {
-      content = "This comment is rejected!";
+
+    if (comment.status === 'rejected') {
+      content = 'This comment has been rejected';
     }
-    return (
-      <ul key={item.id}>
-        <li>{content}</li>
-      </ul>
-    );
+
+    return <li key={comment.id}>{content}</li>;
   });
 
-  return <div>{renderedComments}</div>;
+  return <ul>{renderedComments}</ul>;
 };
